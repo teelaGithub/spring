@@ -3,7 +3,7 @@ package com.demo.spring.context;
 
 import com.demo.aop.AopDemo;
 import com.demo.config.ApplicationConfig;
-import com.demo.controller.Hello;
+import com.demo.controller.HelloController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -17,7 +17,7 @@ public class Application {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         //ClassPathXmlApplicationContext基于xml配置的ApplicationContext实现类
 //        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("");
-        Hello hello = applicationContext.getBean(Hello.class);
+        HelloController hello = applicationContext.getBean(HelloController.class);
         AopDemo aopDemo = applicationContext.getBean(AopDemo.class);
         hello.func();
         System.out.println(aopDemo);

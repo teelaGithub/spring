@@ -13,7 +13,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if ("car".equals(beanName)){
             System.out.println("BeanPostProcessor#postProcessBeforeInitialization");
-            Car car = (Car) bean;
+            CarBean car = (CarBean) bean;
             car.setCarName("bbbbb");
         }
         return bean;
@@ -23,7 +23,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if ("car".equals(beanName)){
             System.out.println("BeanPostProcessor#postProcessAfterInitialization");
-            Car car = (Car) bean;
+            CarBean car = (CarBean) bean;
             car.setCarName("aaaaa");
         }
         return bean;

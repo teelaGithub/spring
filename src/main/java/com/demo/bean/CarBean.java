@@ -6,14 +6,14 @@ import org.springframework.beans.factory.*;
 /**
  * @author litinglan 2019/4/16 14:30
  */
-public class Car implements BeanNameAware, BeanFactoryAware, InitializingBean, DisposableBean {
+public class CarBean implements BeanNameAware, BeanFactoryAware, InitializingBean, DisposableBean {
     private String carName;
     private String brand;
 
     private BeanFactory beanFactory;
     private String beanName;
 
-    public Car() {
+    public CarBean() {
         System.out.println("invoice Car#construct");
     }
 

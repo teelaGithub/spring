@@ -1,6 +1,6 @@
 package com.demo.config;
 
-import com.demo.bean.Car;
+import com.demo.bean.CarBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +15,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class ApplicationConfig {
 
     @Bean(initMethod = "myInit",destroyMethod = "myDestroy")
-    public Car getCar(){
-        Car car = new Car();
+    public CarBean getCar(){
+        CarBean car = new CarBean();
         car.setCarName("11111");
         return car;
     }

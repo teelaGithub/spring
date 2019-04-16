@@ -25,7 +25,7 @@ public class BeanLifeCycle {
         ((ConfigurableBeanFactory)beanFactory).addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
 
         //单例：第一次获取bean时将触发bean生命周期方法的调用，后续则直接从容器缓存池中获取
-        Car car = (Car) beanFactory.getBean("car");
+        CarBean car = (CarBean) beanFactory.getBean("car");
 
         //关闭容器
         ((DefaultListableBeanFactory)beanFactory).destroySingletons();
