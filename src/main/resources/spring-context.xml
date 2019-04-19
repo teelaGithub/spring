@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 也可配置PropertyPlaceholderConfigurer引入外部属性文件 -->
+    <context:property-placeholder location="classpath:log4j.properties"/>
+
+    <!-- use-default-filters="false"只扫描@Controller，否则@Controller、@Service、@Repository、@Component都会扫描 -->
+    <context:component-scan base-package="com.demo" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 配置CustomEditorConfigurer，自动注册自定义属性编辑器 -->
+    <!-- 若使用BeanFactory，则调用registerCustomEditor方法注册自定义属性编辑器 -->
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <!-- 键实现属性类型，值是属性编辑器类型 -->
+                <entry key="com.demo.bean.CarBean" value="com.demo.bean.CarEditor"/>
+            </map>
+        </property>
+    </bean>
+
+    <!-- 配置国际化资源文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>resource</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 工厂方法注入 -->
+    <!--<bean id="carFactory" class="com.demo.bean.CarFactory"/>-->
+    <!-- 非静态工厂方法注入 -->
+    <!--<bean id="car1" factory-bean="carFactory" factory-method="getCar"/>-->
+    <!-- 静态工厂方法注入 -->
+    <!--<bean id="car2" class="com.demo.bean.CarFactory" factory-method="createCar"/>-->
+
+    <!-- 方法替换 -->
+    <!--<bean id="carMethodReplace" class="com.demo.bean.CarMethodReplace"/>
+    <bean id="car3" class="com.demo.bean.CarBean">
+        &lt;!&ndash; 将car#myInit实现替换成carMethodReplace#reimplement的实现 &ndash;&gt;
+        <replaced-method name="myInit" replacer="carMethodReplace"/>
+    </bean>-->
+</beans>

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class ApplicationConfig {
 
     @Bean(initMethod = "myInit",destroyMethod = "myDestroy")
-    public CarBean getCar(){
+    public CarBean carBean(){
         CarBean car = new CarBean();
         car.setCarName("11111");
         return car;

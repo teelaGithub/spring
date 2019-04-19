@@ -8,7 +8,7 @@ import org.springframework.beans.factory.*;
  */
 public class CarBean implements BeanNameAware, BeanFactoryAware, InitializingBean, DisposableBean {
     private String carName;
-    private String brand;
+    private int brand;
 
     private BeanFactory beanFactory;
     private String beanName;
@@ -20,6 +20,10 @@ public class CarBean implements BeanNameAware, BeanFactoryAware, InitializingBea
     public void setCarName(String carName) {
         System.out.println("invoice Car#setCarName====" + carName);
         this.carName = carName;
+    }
+
+    public void setBrand(int brand) {
+        this.brand = brand;
     }
 
     //通过<bean>节点的init-method调用
