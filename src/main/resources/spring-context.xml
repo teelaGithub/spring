@@ -3,8 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 也可配置PropertyPlaceholderConfigurer引入外部属性文件 -->
@@ -34,6 +36,11 @@
             </list>
         </property>
     </bean>
+
+    <!-- 事件监听器 -->
+    <bean id="mailSend" class="com.demo.spring.event.MailSend"/>
+    <bean class="com.demo.spring.event.MailSendListener"/>
+
 
     <!-- 工厂方法注入 -->
     <!--<bean id="carFactory" class="com.demo.bean.CarFactory"/>-->

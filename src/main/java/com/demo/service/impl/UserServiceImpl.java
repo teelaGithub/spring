@@ -12,6 +12,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public String getByName(String name) {
-        return null;
+        System.out.println("执行业务代码");
+        return name;
     }
 }

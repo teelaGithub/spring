@@ -9,6 +9,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
+ * 国际化资源
+ *
  * @author litinglan 2019/4/18 17:03
  */
 public class ResI18n {
@@ -27,8 +29,8 @@ public class ResI18n {
 
     //spring框架加载国际化文件：MessageSource
     public static void springI18n() {
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("spring-context.xml");
-        MessageSource messageSource=(MessageSource)applicationContext.getBean("messageSource");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
+        MessageSource messageSource = (MessageSource) applicationContext.getBean("messageSource");
         String message = messageSource.getMessage("welcome", new Object[]{"jack"}, Locale.CHINA);
         System.out.println(message);
     }
