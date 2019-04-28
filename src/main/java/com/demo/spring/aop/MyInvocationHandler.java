@@ -10,6 +10,7 @@ import java.lang.reflect.Proxy;
 /**
  * JDK动态代理：Proxy、InvocationHandler
  * 实现InvocationHandler接口，定义横切逻辑，并通过反射机制调用目标类的方法，动态将横切逻辑与业务逻辑组合一起
+ * 注：只能为接口创建代理实例，代理对象的性能比cglib差，但创建代理对象的速度比cglib快
  *
  * @author litinglan 2019/4/19 17:20
  */
@@ -43,8 +44,8 @@ public class MyInvocationHandler implements InvocationHandler {
         UserService userService = new UserServiceImpl();
         //将目标类的业务逻辑和横切逻辑结合
         MyInvocationHandler myInvocationHandler = new MyInvocationHandler(userService);
-        //创建代理实例
-        UserService proxyUserService = (UserService)Proxy.newProxyInstance(userService.getClass().getClassLoader(), userService.getClass().getInterfaces(), myInvocationHandler);
+        //创建代理实例（针对接口，若换成UserServiceImpl则抛异常）
+        UserService proxyUserService = (UserService) Proxy.newProxyInstance(userService.getClass().getClassLoader(), userService.getClass().getInterfaces(), myInvocationHandler);
         //调用
         proxyUserService.getByName("proxy");
     }
