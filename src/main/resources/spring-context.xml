@@ -41,6 +41,20 @@
     <bean id="mailSend" class="com.demo.spring.event.MailSend"/>
     <bean class="com.demo.spring.event.MailSendListener"/>
 
+    <!-- 事务管理 -->
+    <!--<bean id="transactionManager" class="org.springframework.transaction.support.AbstractPlatformTransactionManager"/>
+    &lt;!&ndash; ①基于 @Transactional 的声明式事务管理 &ndash;&gt;
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    &lt;!&ndash; ②基于Aspectj AOP配置事务 &ndash;&gt;
+    <tx:advice id="txAdvice" transaction-manager="transactionManager"/>
+    &lt;!&ndash; proxy-target-class="true"使用cglib动态代理，false使用jdk动态代理 &ndash;&gt;
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="point" expression="execution(* com.demo.service..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="point"/>
+    </aop:config>
+    &lt;!&ndash; ③基于Aspectj AOP注解配置事务（@Aspect、@Pointcut、@Before等） &ndash;&gt;
+    <aop:aspectj-autoproxy/>-->
+
 
     <!-- 工厂方法注入 -->
     <!--<bean id="carFactory" class="com.demo.bean.CarFactory"/>-->

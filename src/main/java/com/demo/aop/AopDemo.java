@@ -1,9 +1,6 @@
 package com.demo.aop;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,6 +20,12 @@ public class AopDemo {
         System.out.println("--------before method--------");
     }
 
+    @AfterReturning("point()")
+    public void afterReturning() {
+        System.out.println("--------afterReturning method--------");
+    }
+
+    //final增强，总会执行，一般用于释放资源等（finally）
     @After("point()")
     public void after() {
         System.out.println("--------after method--------");
