@@ -61,6 +61,26 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--  spring第三方依赖包包含了2个数据源的实现类包，apache的DBCP和c3p0-->
+        <!-- ①DBCP是一个依赖Jakarta commons-pool对象池机制的数据库连接池，所以必须加入commons-pool依赖 -->
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <!-- spring jdbc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <!-- 日志管理 -->
         <dependency>

@@ -41,19 +41,30 @@
     <bean id="mailSend" class="com.demo.spring.event.MailSend"/>
     <bean class="com.demo.spring.event.MailSendListener"/>
 
+    <!-- DBCP数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value=""/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mberdev"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
     <!-- 事务管理 -->
-    <!--<bean id="transactionManager" class="org.springframework.transaction.support.AbstractPlatformTransactionManager"/>
-    &lt;!&ndash; ①基于 @Transactional 的声明式事务管理 &ndash;&gt;
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-    &lt;!&ndash; ②基于Aspectj AOP配置事务 &ndash;&gt;
-    <tx:advice id="txAdvice" transaction-manager="transactionManager"/>
-    &lt;!&ndash; proxy-target-class="true"使用cglib动态代理，false使用jdk动态代理 &ndash;&gt;
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- ①基于 @Transactional 的声明式事务管理 -->
+    <tx:annotation-driven/>
+    <!-- ②基于Aspectj AOP配置事务 -->
+    <!-- 默认查找transactionManager的事务管理器 -->
+    <tx:advice id="txAdvice"/>
+    <!-- proxy-target-class="true"使用cglib动态代理，false使用jdk动态代理 -->
     <aop:config proxy-target-class="true">
         <aop:pointcut id="point" expression="execution(* com.demo.service..*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="point"/>
     </aop:config>
-    &lt;!&ndash; ③基于Aspectj AOP注解配置事务（@Aspect、@Pointcut、@Before等） &ndash;&gt;
-    <aop:aspectj-autoproxy/>-->
+    <!-- ③基于Aspectj AOP注解配置事务（@Aspect、@Pointcut、@Before等） -->
+    <aop:aspectj-autoproxy/>
 
 
     <!-- 工厂方法注入 -->
