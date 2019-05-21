@@ -28,7 +28,7 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- 基于core、beans，已框架风格访问对象，ApplicationContext -->
+        <!-- 基于core、beans，以框架风格访问对象，ApplicationContext -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -61,6 +61,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- spring jdbc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <!--  spring第三方依赖包包含了2个数据源的实现类包，apache的DBCP和c3p0-->
         <!-- ①DBCP是一个依赖Jakarta commons-pool对象池机制的数据库连接池，所以必须加入commons-pool依赖 -->
         <dependency>
@@ -74,12 +81,13 @@
             <version>2.6.0</version>
         </dependency>
 
-        <!-- spring jdbc -->
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.15</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <!-- 日志管理 -->
@@ -89,7 +97,13 @@
             <version>1.2.17</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+        <!-- quartz任务调度 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
