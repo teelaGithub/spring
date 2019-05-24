@@ -75,14 +75,9 @@ public class NormalAlgo {
     }
 
     /**
-     * 归并排序：
-     */
-    public static void mergeSort(int[] arr) {
-        double floor = Math.floor(arr.length / 2);
-    }
-
-    /**
-     * 希尔排序：
+     * 希尔排序：取一个整数increment（小于n）作为间隔将全部元素分为increment个子序列，所有距离为increment的元素
+     * 放在同一个子序列中，在每一个子序列中分别实行直接插入排序
+     * increment=len/2 或 increment=len/3+1
      */
     public static void shellSort(int[] arr) {
         int d = arr.length / 2;
@@ -90,22 +85,35 @@ public class NormalAlgo {
             for (int i = d; i < arr.length; i++) {
                 int j = i - d;
                 int temp = arr[i];    //记录要插入的数据
-                while (j >= 0 & arr[j] > temp) {  //从后向前，找到比其小的数的位置
+                while (j >= 0 && arr[j] > temp) {  //从后向前，找到比其小的数的位置
                     arr[j + d] = arr[j];    //向后挪动
                     j -= d;
                 }
-                if (j != i - d)    //存在比其小的数
-                    arr[j + d] = temp;
+//                if (j != i - d)    //存在比其小的数
+                arr[j + d] = temp;
             }
             d /= 2;
         }
+    }
+
+    /**
+     * 归并排序：
+     */
+    public static void mergeSort(int[] arr) {
+        
+    }
+
+    /**
+     * 快速排序：
+     */
+    public static void quickSort(int[] arr) {
 
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[10];
+        int[] arr = new int[9];
         Random random = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             arr[i] = random.nextInt(100);
             System.out.printf("%2d ", arr[i]);
         }
