@@ -97,10 +97,48 @@ public class NormalAlgo {
     }
 
     /**
-     * 归并排序：
+     * 归并排序：采用分治法，将待排序列递归划分子序列并使之有序，再合并有序子序列
+     * 时间复杂度：O(nlgn)
      */
     public static void mergeSort(int[] arr) {
-        
+        mSort(arr, 0, arr.length - 1);
+    }
+
+    private static void mSort(int[] arr, int left, int right) {
+        if (left >= right)
+            return;
+        int mid = (left + right) / 2;
+        mSort(arr, left, mid);
+        mSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+
+    private static void merge(int[] arr, int left, int mid, int right) {
+        int i = left;//左子序列起始子针
+        int j = mid + 1;//右子序列起始子针
+        int t = 0;//缓存序列起始子针
+        int[] temp = new int[right - left + 1];//临时缓存序列
+        //将左右子序列合并保存在临时序列中
+        while (i <= mid && j <= right) {
+            if (arr[i] > arr[j]) {
+                temp[t++] = arr[j++];
+            } else {
+                temp[t++] = arr[i++];
+            }
+        }
+        //将左序列剩余元素放入临时序列
+        while (i <= mid) {
+            temp[t++] = arr[i++];
+        }
+        //将右序列剩余元素放入临时序列
+        while (j <= right) {
+            temp[t++] = arr[j++];
+        }
+        //将临时序列元素复制到原序列中
+        t = 0;
+        while (left <= right) {
+            arr[left++] = temp[t++];
+        }
     }
 
     /**
@@ -118,7 +156,7 @@ public class NormalAlgo {
             System.out.printf("%2d ", arr[i]);
         }
         System.out.println();
-        NormalAlgo.shellSort(arr);
+        NormalAlgo.mergeSort(arr);
 
         for (int i = 0; i < arr.length; i++) {
             System.out.printf("%2d ", arr[i]);
