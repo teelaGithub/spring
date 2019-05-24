@@ -1,5 +1,6 @@
 package com.demo.algorithm;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -104,6 +105,7 @@ public class NormalAlgo {
         mSort(arr, 0, arr.length - 1);
     }
 
+    //将原序列递归划分成若干左右子序列
     private static void mSort(int[] arr, int left, int right) {
         if (left >= right)
             return;
@@ -113,6 +115,7 @@ public class NormalAlgo {
         merge(arr, left, mid, right);
     }
 
+    //合并左右子序列
     private static void merge(int[] arr, int left, int mid, int right) {
         int i = left;//左子序列起始子针
         int j = mid + 1;//右子序列起始子针
@@ -153,14 +156,9 @@ public class NormalAlgo {
         Random random = new Random();
         for (int i = 0; i < 9; i++) {
             arr[i] = random.nextInt(100);
-            System.out.printf("%2d ", arr[i]);
         }
-        System.out.println();
+        System.out.println(Arrays.toString(arr));
         NormalAlgo.mergeSort(arr);
-
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%2d ", arr[i]);
-        }
-        System.out.println();
+        System.out.println(Arrays.toString(arr));
     }
 }
